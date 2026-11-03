@@ -1,0 +1,38 @@
+[
+ {
+  "id": 1,
+  "name": "Admin User",
+  "username": "admin",
+  "password": "admin123",
+  "role": "admin",
+  "email": "admin@secops.local",
+  "department": "Security Management"
+ },
+ {
+  "id": 2,
+  "name": "Aarav Sharma",
+  "username": "analyst",
+  "password": "analyst123",
+  "role": "analyst",
+  "email": "aarav@secops.local",
+  "department": "SOC Tier 2"
+ },
+ {
+  "id": 3,
+  "name": "Priya Nair",
+  "username": "viewer",
+  "password": "viewer123",
+  "role": "viewer",
+  "email": "priya@secops.local",
+  "department": "Compliance"
+ },
+ {
+  "id": 4,
+  "name": "Rohan Patil",
+  "username": "rohan",
+  "password": "rohan123",
+  "role": "analyst",
+  "email": "rohan@secops.local",
+  "department": "SOC Tier 1"
+ }
+]

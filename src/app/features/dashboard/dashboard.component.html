@@ -1,0 +1,102 @@
+<div class="page-head">
+  <div>
+    <h1>Security Overview</h1>
+    <p>Real-time posture of your network, endpoints and applications.</p>
+  </div>
+  <div class="row">
+    <div class="chips" role="group" aria-label="Time range">
+      @for (r of ranges; track r) {
+        <button class="chip" [class.on]="rangeDays() === r" (click)="rangeDays.set(r)">Last {{ r }} days</button>
+      }
+    </div>
+    <button class="btn" [class.primary]="live()" (click)="toggleLive()">
+      {{ live() ? '⏸ Live feed ON' : '▶ Start live feed' }}
+    </button>
+  </div>
+</div>
+
+<section class="grid g-4">
+  <article class="card kpi k-accent clickable" (click)="go('/threats')" tabindex="0" (keydown.enter)="go('/threats')">
+    <span class="icon-bg">🎯</span>
+    <div class="label">Total Threats</div>
+    <div class="value">{{ kpis().total }}</div>
+    <div class="trend">in the last {{ rangeDays() }} days</div>
+  </article>
+  <article class="card kpi k-critical clickable" (click)="go('/threats', { severity: 'Critical' })" tabindex="0" (keydown.enter)="go('/threats', { severity: 'Critical' })">
+    <span class="icon-bg">🔥</span>
+    <div class="label">Critical Unresolved</div>
+    <div class="value">{{ kpis().critical }}</div>
+    <div class="trend">need immediate attention</div>
+  </article>
+  <article class="card kpi k-high clickable" (click)="go('/incidents')" tabindex="0" (keydown.enter)="go('/incidents')">
+    <span class="icon-bg">🚨</span>
+    <div class="label">Open Incidents</div>
+    <div class="value">{{ kpis().openIncidents }}</div>
+    <div class="trend">open or under investigation</div>
+  </article>
+  <article class="card kpi k-ok">
+    <span class="icon-bg">🛡</span>
+    <div class="label">Mitigated</div>
+    <div class="value">{{ kpis().mitigated }}</div>
+    <div class="trend">{{ kpis().mitigationRate }}% mitigation rate</div>
+  </article>
+</section>
+
+<section class="grid g-21 mt">
+  <article class="card">
+    <div class="card-head"><h3>Threat Activity</h3><span class="sub">Daily detections</span></div>
+    <app-chart [config]="trendChart()" [height]="290" />
+  </article>
+  <article class="card">
+    <div class="card-head"><h3>Severity Breakdown</h3><span class="sub">click to filter feed</span></div>
+    <div class="legend-list">
+      @for (s of severityCounts(); track s.name) {
+        <div class="item" style="cursor: pointer" (click)="go('/threats', { severity: s.name })" tabindex="0" (keydown.enter)="go('/threats', { severity: s.name })">
+          <span style="width: 70px">{{ s.name }}</span>
+          <div class="bar-bg"><div class="bar-fill" [style.width.%]="kpis().total ? (s.count / kpis().total) * 100 : 0" [style.background]="sevColor(s.name)"></div></div>
+          <strong style="width: 34px; text-align: right">{{ s.count }}</strong>
+        </div>
+      }
+    </div>
+    <div class="card-head" style="margin-top: 24px"><h3>Top Attack Origins</h3></div>
+    <div class="legend-list">
+      @for (c of topCountries(); track c[0]) {
+        <div class="item">
+          <span style="width: 110px" class="muted">{{ c[0] }}</span>
+          <div class="bar-bg"><div class="bar-fill" [style.width.%]="(c[1] / maxCountry()) * 100"></div></div>
+          <strong style="width: 34px; text-align: right">{{ c[1] }}</strong>
+        </div>
+      }
+    </div>
+  </article>
+</section>
+
+<section class="grid g-2 mt">
+  <article class="card">
+    <div class="card-head"><h3>Threats by Type</h3></div>
+    <app-chart [config]="typeChart()" [height]="250" />
+  </article>
+  <article class="card">
+    <div class="card-head"><h3>Attacks by Country</h3></div>
+    <app-chart [config]="countryChart()" [height]="250" />
+  </article>
+</section>
+
+<section class="card mt">
+  <div class="card-head">
+    <h3>Latest Alerts @if (live()) { <span class="live-dot" style="margin-left: 8px"></span> }</h3>
+    <a routerLink="/threats">View all →</a>
+  </div>
+  @for (t of recent(); track t.id) {
+    <div class="feed-item clickable" [class.new]="live()" style="cursor: pointer" (click)="openThreat(t.id)" tabindex="0" (keydown.enter)="openThreat(t.id)">
+      <span class="sev-bar" [class]="'sev-bar sev-' + t.severity.toLowerCase()"></span>
+      <div style="flex: 1; min-width: 0">
+        <div class="row"><strong>{{ t.name }}</strong><app-badge [label]="t.severity" /><app-badge [label]="t.status" /></div>
+        <div class="muted" style="font-size: 12.5px; margin-top: 3px">
+          {{ t.type }} · <span class="mono">{{ t.sourceIp }}</span> · {{ t.country }} → {{ t.targetAsset }}
+        </div>
+      </div>
+      <span class="muted" style="font-size: 12px; white-space: nowrap">{{ t.timestamp | timeAgo }}</span>
+    </div>
+  }
+</section>

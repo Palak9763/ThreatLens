@@ -1,0 +1,70 @@
+<div class="page-head">
+  <div>
+    <h1>IOC Lookup</h1>
+    <p>Check an IP address, domain, URL or file hash against the threat-intelligence database.</p>
+  </div>
+</div>
+
+<div class="grid g-21">
+  <section class="card">
+    <form (ngSubmit)="search()" novalidate>
+      <label class="field">Indicator of Compromise
+        <div class="row" style="flex-wrap: nowrap; margin-top: 6px">
+          <input type="text" [formControl]="input" placeholder="e.g. 185.220.101.45 or secure-login-verify.com" style="margin: 0" [class.invalid]="input.touched && input.invalid" />
+          <button class="btn primary" type="submit" [disabled]="scanning()">{{ scanning() ? 'Scanning…' : 'Analyse' }}</button>
+        </div>
+        @if (input.touched && input.errors?.['required']) { <span class="err">Enter an IP, domain, URL or hash.</span> }
+        @if (input.errors?.['invalidIoc']) { <span class="err">That doesn't look like a valid IPv4 address, domain, URL or MD5/SHA hash.</span> }
+        @if (liveType(); as lt) { <span class="muted" style="font-size: 12px; display: block; margin-top: 6px">Detected type: <span class="tag">{{ lt }}</span></span> }
+      </label>
+    </form>
+
+    <div class="row" style="margin-bottom: 18px">
+      <span class="muted" style="font-size: 12px">Try:</span>
+      @for (e of examples; track e) { <button class="chip mono" (click)="useExample(e)">{{ e }}</button> }
+    </div>
+
+    @if (scanning()) {
+      <div class="skeleton" style="height: 220px"></div>
+    }
+
+    @if (result(); as r) {
+      <div class="grid g-2" style="align-items: center">
+        <div class="gauge" role="img" [attr.aria-label]="'Risk score ' + r.riskScore + ' out of 100'">
+          <svg width="170" height="170" viewBox="0 0 170 170">
+            <circle cx="85" cy="85" r="70" fill="none" stroke="var(--panel-2)" stroke-width="14" />
+            <circle cx="85" cy="85" r="70" fill="none" [attr.stroke]="scoreColor(r.riskScore)" stroke-width="14" stroke-linecap="round"
+              [attr.stroke-dasharray]="circumference" [attr.stroke-dashoffset]="circumference * (1 - r.riskScore / 100)" style="transition: stroke-dashoffset .8s" />
+          </svg>
+          <div class="g-val" [style.color]="scoreColor(r.riskScore)"><div>{{ r.riskScore }}<small>Risk score</small></div></div>
+        </div>
+        <div>
+          <div class="row" style="margin-bottom: 8px"><app-badge [label]="r.verdict" /><span class="tag">{{ r.type }}</span></div>
+          <div class="mono" style="word-break: break-all; margin-bottom: 10px">{{ r.query }}</div>
+          @if (r.ioc; as i) {
+            <dl class="kv" style="grid-template-columns: 110px 1fr">
+              <dt>Reports</dt><dd>{{ i.reports }}</dd>
+              <dt>Country</dt><dd>{{ i.country }}</dd>
+              <dt>First seen</dt><dd>{{ i.firstSeen | timeAgo }}</dd>
+              <dt>Last seen</dt><dd>{{ i.lastSeen | timeAgo }}</dd>
+              <dt>Tags</dt><dd>@for (t of i.tags; track t) { <span class="tag">{{ t }}</span> } @empty { — }</dd>
+            </dl>
+          } @else {
+            <p class="muted" style="margin: 0">No records found in the local threat database. The score is an estimate – treat unknown indicators with caution.</p>
+          }
+        </div>
+      </div>
+    }
+  </section>
+
+  <aside class="card">
+    <div class="card-head"><h3>Recent Lookups</h3>@if (history().length) { <button class="btn sm ghost" (click)="clearHistory()">Clear</button> }</div>
+    <div class="stack">
+      @for (h of history(); track h) {
+        <button class="demo-user mono" style="font-size: 12.5px; word-break: break-all; text-align: left" (click)="useExample(h)">{{ h }}</button>
+      } @empty {
+        <div class="empty">No lookups yet.</div>
+      }
+    </div>
+  </aside>
+</div>

@@ -1,0 +1,57 @@
+<div class="page-head">
+  <div>
+    <h1>Security Reports</h1>
+    <p>Summary of threats and incidents for the selected period. Generated {{ generatedAt.toLocaleString('en-IN') }} by {{ auth.currentUser()?.name }}.</p>
+  </div>
+  <div class="row no-print">
+    <div class="chips">
+      @for (p of periods; track p) { <button class="chip" [class.on]="period() === p" (click)="period.set(p)">Last {{ p }} days</button> }
+    </div>
+    <button class="btn primary" (click)="print()">🖨 Print / Save as PDF</button>
+  </div>
+</div>
+
+<section class="grid g-4">
+  <article class="card kpi k-accent"><div class="label">Threats detected</div><div class="value">{{ summary().total }}</div></article>
+  <article class="card kpi k-critical"><div class="label">Critical threats</div><div class="value">{{ summary().critical }}</div></article>
+  <article class="card kpi k-ok"><div class="label">Incident resolution</div><div class="value">{{ summary().resolutionRate }}%</div><div class="trend">{{ summary().incidents }} incidents total</div></article>
+  <article class="card kpi k-high"><div class="label">Malicious IOCs</div><div class="value">{{ summary().maliciousIocs }}</div></article>
+</section>
+
+<section class="grid g-2 mt">
+  <article class="card"><div class="card-head"><h3>Threats by Severity</h3></div><app-chart [config]="severityChart()" [height]="240" /></article>
+  <article class="card"><div class="card-head"><h3>Incidents by Status</h3></div><app-chart [config]="incidentChart()" [height]="240" /></article>
+</section>
+
+<section class="grid g-2 mt">
+  <article class="card">
+    <div class="card-head"><h3>Threats by Type</h3></div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Type</th><th>Count</th><th>Share</th></tr></thead>
+      <tbody>
+        @for (r of byType(); track r[0]) {
+          <tr><td>{{ r[0] }}</td><td>{{ r[1] }}</td><td>{{ summary().total ? ((r[1] / summary().total) * 100).toFixed(1) : 0 }}%</td></tr>
+        } @empty { <tr><td colspan="3" class="empty">No data in this period.</td></tr> }
+      </tbody>
+    </table></div>
+  </article>
+  <article class="card">
+    <div class="card-head"><h3>Most Targeted Assets</h3></div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Asset</th><th>Attacks</th></tr></thead>
+      <tbody>
+        @for (r of topAssets(); track r[0]) { <tr><td>{{ r[0] }}</td><td>{{ r[1] }}</td></tr> }
+        @empty { <tr><td colspan="2" class="empty">No data in this period.</td></tr> }
+      </tbody>
+    </table></div>
+  </article>
+</section>
+
+<section class="card mt no-print">
+  <div class="card-head"><h3>Export Data</h3><span class="sub">Download as CSV (opens in Excel)</span></div>
+  <div class="row">
+    <button class="btn" (click)="exportThreats()">⬇ Threats ({{ scoped().length }})</button>
+    <button class="btn" (click)="exportIncidents()">⬇ Incidents ({{ incidents().length }})</button>
+    <button class="btn" (click)="exportIocs()">⬇ IOCs ({{ iocs().length }})</button>
+  </div>
+</section>

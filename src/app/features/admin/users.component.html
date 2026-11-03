@@ -1,0 +1,47 @@
+<div class="page-head">
+  <div>
+    <h1>User Management</h1>
+    <p>Administrators can review accounts and change access roles.</p>
+  </div>
+</div>
+
+<section class="grid g-3" style="margin-bottom: 18px">
+  @for (r of roles; track r) {
+    <article class="card">
+      <h3 style="text-transform: capitalize">{{ r }}</h3>
+      <p class="muted" style="margin: 6px 0 0">{{ roleDescription[r] }}</p>
+    </article>
+  }
+</section>
+
+<section class="card">
+  <div class="toolbar">
+    <div class="grow"><input type="search" placeholder="Search users…" [value]="search()" (input)="search.set($any($event.target).value)" aria-label="Search users" /></div>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>User</th><th>Username</th><th>Department</th><th>Role</th></tr></thead>
+      <tbody>
+        @for (u of users(); track u.id) {
+          <tr>
+            <td>
+              <div class="row" style="flex-wrap: nowrap">
+                <div class="avatar">{{ initials(u.name) }}</div>
+                <div><strong>{{ u.name }}</strong>@if (u.id === auth.currentUser()?.id) { <span class="tag" style="margin-left: 8px">You</span> }<div class="muted" style="font-size: 12px">{{ u.email }}</div></div>
+              </div>
+            </td>
+            <td class="mono">{{ u.username }}</td>
+            <td>{{ u.department }}</td>
+            <td>
+              <select style="width: auto" [value]="u.role" (change)="changeRole(u, $any($event.target).value)" [attr.aria-label]="'Role for ' + u.name">
+                @for (r of roles; track r) { <option [value]="r" [selected]="r === u.role">{{ r }}</option> }
+              </select>
+            </td>
+          </tr>
+        } @empty {
+          <tr><td colspan="4"><div class="empty">No users found.</div></td></tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</section>

@@ -1,0 +1,68 @@
+<div class="shell">
+  <aside class="sidebar" [class.open]="menuOpen()">
+    <div class="brand">
+      <div class="logo">🛡</div>
+      <div>ThreatLens<small>Threat Intelligence</small></div>
+    </div>
+
+    <nav class="nav" (click)="menuOpen.set(false)">
+      <div class="nav-label">Monitor</div>
+      <a routerLink="/dashboard" routerLinkActive="active"><span class="ico">📊</span> Dashboard</a>
+      <a routerLink="/threats" routerLinkActive="active">
+        <span class="ico">🎯</span> Threat Feed
+        @if (criticalActive() > 0) { <span class="count">{{ criticalActive() }}</span> }
+      </a>
+      <a routerLink="/ioc" routerLinkActive="active"><span class="ico">🔎</span> IOC Lookup</a>
+
+      <div class="nav-label">Respond</div>
+      <a routerLink="/incidents" routerLinkActive="active"><span class="ico">🚨</span> Incidents</a>
+      <a routerLink="/reports" routerLinkActive="active"><span class="ico">📄</span> Reports</a>
+
+      @if (auth.hasRole('admin')) {
+        <div class="nav-label">Administration</div>
+        <a routerLink="/admin/users" routerLinkActive="active"><span class="ico">👥</span> User Management</a>
+      }
+    </nav>
+
+    <div class="side-foot">
+      <b><span class="live-dot"></span>System Online</b>
+      Sensors: 24/24 active<br />Threat feeds synced
+    </div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <button class="btn icon menu-btn" (click)="menuOpen.set(!menuOpen())" aria-label="Toggle menu">☰</button>
+      <div class="search-global">
+        <span class="s-ico">🔍</span>
+        <input #q type="search" placeholder="Search threats, IPs, countries…  (press Enter)" (keydown.enter)="search(q.value); q.value = ''" aria-label="Global search" />
+      </div>
+      <div class="top-actions">
+        <button class="btn icon" (click)="theme.toggle()" [title]="'Switch to ' + (theme.theme() === 'dark' ? 'light' : 'dark') + ' theme'">
+          {{ theme.theme() === 'dark' ? '☀️' : '🌙' }}
+        </button>
+        <div class="user-chip">
+          <div class="avatar">{{ initials() }}</div>
+          <div><strong>{{ auth.currentUser()?.name }}</strong><small>{{ auth.currentUser()?.role }}</small></div>
+        </div>
+        <button class="btn sm" (click)="logout()">Logout</button>
+      </div>
+    </header>
+
+    <main class="content">
+      @if (loadError()) {
+        <div class="card empty">
+          <span class="big">⚠️</span>{{ loadError() }}<br /><br />
+          <button class="btn primary" (click)="reload()">Reload</button>
+        </div>
+      } @else if (!loaded()) {
+        <div class="grid g-4">
+          @for (n of [1, 2, 3, 4]; track n) { <div class="skeleton" style="height: 110px"></div> }
+        </div>
+        <div class="skeleton mt" style="height: 320px"></div>
+      } @else {
+        <router-outlet />
+      }
+    </main>
+  </div>
+</div>

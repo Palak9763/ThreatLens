@@ -1,0 +1,146 @@
+<div class="page-head">
+  <div>
+    <h1>Incident Response</h1>
+    <p>Track investigations from detection to closure. @if (canEdit()) { Drag cards between columns to change status. }</p>
+  </div>
+  <div class="row">
+    <div class="chips">
+      <button class="chip" [class.on]="view() === 'board'" (click)="view.set('board')">▦ Board</button>
+      <button class="chip" [class.on]="view() === 'list'" (click)="view.set('list')">☰ List</button>
+    </div>
+    @if (canEdit()) { <button class="btn primary" (click)="openCreate()">＋ New Incident</button> }
+  </div>
+</div>
+
+<div class="toolbar">
+  <div class="grow"><input type="search" placeholder="Search incidents by title, ID or analyst…" [value]="search()" (input)="search.set($any($event.target).value)" aria-label="Search incidents" /></div>
+  <select [value]="sevFilter()" (change)="sevFilter.set($any($event.target).value)" aria-label="Severity filter">
+    <option value="All">All severities</option>
+    @for (s of severities; track s) { <option [value]="s">{{ s }}</option> }
+  </select>
+  <button class="chip" [class.on]="mineOnly()" (click)="mineOnly.set(!mineOnly())">👤 Assigned to me</button>
+  @if (canEdit()) { <button class="btn sm ghost" (click)="resetDemo()" title="Restore the original demo incidents">↺ Reset demo data</button> }
+</div>
+
+@if (!canEdit()) { <div class="card" style="margin-bottom: 14px; padding: 12px 16px">👁 You have <b>viewer</b> access – incidents are read-only.</div> }
+
+@if (view() === 'board') {
+  <div class="board">
+    @for (col of columns(); track col.status) {
+      <section class="col" [class.over]="overCol() === col.status"
+        (dragover)="onDragOver($event, col.status)" (dragleave)="overCol.set(null)" (drop)="onDrop($event, col.status)">
+        <h4>{{ col.status }} <span class="n">{{ col.items.length }}</span></h4>
+        @for (i of col.items; track i.id) {
+          <article class="ticket" [class.dragging]="dragId() === i.id" [attr.draggable]="canEdit()"
+            (dragstart)="onDragStart($event, i)" (dragend)="onDragEnd()" (click)="open(i)" tabindex="0" (keydown.enter)="open(i)">
+            <div class="t-id"><span class="mono">{{ i.id }}</span><app-badge [label]="i.severity" /></div>
+            <div class="t-title">{{ i.title }}</div>
+            <div class="t-foot"><span>👤 {{ i.assignee }}</span><span>{{ i.createdAt | timeAgo }}</span></div>
+          </article>
+        } @empty {
+          <div class="empty" style="padding: 24px 6px; font-size: 12.5px">Nothing here</div>
+        }
+      </section>
+    }
+  </div>
+} @else {
+  <div class="card">
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>ID</th><th>Title</th><th>Severity</th><th>Status</th><th>Assignee</th><th>Created</th></tr></thead>
+        <tbody>
+          @for (i of filtered(); track i.id) {
+            <tr class="clickable" (click)="open(i)" tabindex="0" (keydown.enter)="open(i)">
+              <td class="mono muted">{{ i.id }}</td><td><strong>{{ i.title }}</strong></td>
+              <td><app-badge [label]="i.severity" /></td><td><app-badge [label]="i.status" /></td>
+              <td>{{ i.assignee }}</td><td class="muted">{{ i.createdAt | timeAgo }}</td>
+            </tr>
+          } @empty {
+            <tr><td colspan="6"><div class="empty"><span class="big">✅</span>No incidents match.</div></td></tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+}
+
+<!-- Create / edit modal -->
+@if (showForm()) {
+  <div class="overlay" (click)="closeForm()">
+    <form class="modal" [formGroup]="form" (ngSubmit)="save()" (click)="$event.stopPropagation()" novalidate>
+      <h2>{{ editingId() ? 'Edit ' + editingId() : 'Create New Incident' }}</h2>
+      <label class="field">Title
+        <input type="text" formControlName="title" placeholder="Short summary of the incident" />
+        @if (form.controls.title.touched && form.controls.title.errors) { <span class="err">Title must be 5–90 characters.</span> }
+      </label>
+      <div class="grid g-2" style="gap: 14px">
+        <label class="field">Severity
+          <select formControlName="severity">@for (s of severities; track s) { <option [value]="s">{{ s }}</option> }</select>
+        </label>
+        <label class="field">Assign to
+          <select formControlName="assignee">@for (a of analysts; track a) { <option [value]="a">{{ a }}</option> }</select>
+        </label>
+      </div>
+      <label class="field">Description
+        <textarea formControlName="description" placeholder="What happened? What is affected?"></textarea>
+        @if (form.controls.description.touched && form.controls.description.errors) { <span class="err">Please add at least 10 characters.</span> }
+      </label>
+      <div class="modal-actions">
+        <button type="button" class="btn" (click)="closeForm()">Cancel</button>
+        <button type="submit" class="btn primary">{{ editingId() ? 'Save changes' : 'Create incident' }}</button>
+      </div>
+    </form>
+  </div>
+}
+
+<!-- Detail modal -->
+@if (selected(); as s) {
+  <div class="overlay" (click)="selectedId.set(null)">
+    <div class="modal wide" (click)="$event.stopPropagation()">
+      <div class="row" style="margin-bottom: 4px"><span class="mono muted">{{ s.id }}</span><app-badge [label]="s.severity" /><app-badge [label]="s.status" /><span class="spacer"></span>
+        <button class="btn icon sm" (click)="selectedId.set(null)" aria-label="Close">✕</button></div>
+      <h2 style="font-size: 20px">{{ s.title }}</h2>
+      <p class="muted">{{ s.description }}</p>
+
+      <dl class="kv" style="margin-bottom: 16px">
+        <dt>Assignee</dt>
+        <dd>
+          @if (canEdit()) {
+            <select style="width: auto" [value]="s.assignee" (change)="assign(s, $any($event.target).value)">
+              @for (a of analysts; track a) { <option [value]="a" [selected]="a === s.assignee">{{ a }}</option> }
+            </select>
+          } @else { {{ s.assignee }} }
+        </dd>
+        <dt>Created</dt><dd>{{ s.createdAt.toLocaleString('en-IN') }}</dd>
+      </dl>
+
+      @if (canEdit()) {
+        <div class="row" style="margin-bottom: 16px">
+          <span class="muted">Move to:</span>
+          <div class="chips">@for (st of statuses; track st) { <button class="chip" [class.on]="s.status === st" (click)="move(s, st)">{{ st }}</button> }</div>
+        </div>
+      }
+
+      <h3 style="margin-bottom: 8px">Activity & Notes</h3>
+      <div class="stack" style="max-height: 200px; overflow: auto; margin-bottom: 12px">
+        @for (n of s.notes.slice().reverse(); track $index) {
+          <div class="card" style="padding: 10px 12px; box-shadow: none; background: var(--panel-2)">
+            <div class="row"><strong>{{ n.author }}</strong><span class="muted" style="font-size: 12px">{{ n.timestamp | timeAgo }}</span></div>
+            <div>{{ n.text }}</div>
+          </div>
+        }
+      </div>
+
+      @if (canEdit()) {
+        <div class="row" style="flex-wrap: nowrap">
+          <input type="text" [formControl]="noteCtl" placeholder="Add a note…" (keydown.enter)="addNote()" style="margin: 0" />
+          <button class="btn" (click)="addNote()">Add</button>
+        </div>
+        <div class="modal-actions" style="margin-top: 18px; justify-content: space-between">
+          <button class="btn danger" (click)="remove()">{{ confirmDelete() ? 'Click again to confirm' : '🗑 Delete' }}</button>
+          <button class="btn" (click)="openEdit(s)">✎ Edit details</button>
+        </div>
+      }
+    </div>
+  </div>
+}

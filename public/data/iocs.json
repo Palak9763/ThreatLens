@@ -1,0 +1,889 @@
+[
+ {
+  "id": "IOC-2001",
+  "value": "185.220.101.45",
+  "type": "ip",
+  "riskScore": 92,
+  "verdict": "Malicious",
+  "tags": [
+   "tor-exit",
+   "botnet"
+  ],
+  "country": "China",
+  "reports": 388,
+  "firstSeenMinutesAgo": 55753,
+  "lastSeenMinutesAgo": 712
+ },
+ {
+  "id": "IOC-2002",
+  "value": "secure-login-verify.com",
+  "type": "domain",
+  "riskScore": 88,
+  "verdict": "Malicious",
+  "tags": [
+   "phishing"
+  ],
+  "country": "North Korea",
+  "reports": 214,
+  "firstSeenMinutesAgo": 162185,
+  "lastSeenMinutesAgo": 3167
+ },
+ {
+  "id": "IOC-2003",
+  "value": "8.8.8.8",
+  "type": "ip",
+  "riskScore": 3,
+  "verdict": "Clean",
+  "tags": [],
+  "country": "United States",
+  "reports": 0,
+  "firstSeenMinutesAgo": 91039,
+  "lastSeenMinutesAgo": 1149
+ },
+ {
+  "id": "IOC-2004",
+  "value": "http://34093f-files.top/0ba83/payload.exe",
+  "type": "url",
+  "riskScore": 42,
+  "verdict": "Suspicious",
+  "tags": [
+   "botnet",
+   "scanner"
+  ],
+  "country": "Brazil",
+  "reports": 381,
+  "firstSeenMinutesAgo": 53116,
+  "lastSeenMinutesAgo": 1273
+ },
+ {
+  "id": "IOC-2005",
+  "value": "194.212.233.98",
+  "type": "ip",
+  "riskScore": 44,
+  "verdict": "Suspicious",
+  "tags": [
+   "spam"
+  ],
+  "country": "North Korea",
+  "reports": 10,
+  "firstSeenMinutesAgo": 55854,
+  "lastSeenMinutesAgo": 4243
+ },
+ {
+  "id": "IOC-2006",
+  "value": "update-microsoft-cdn.net",
+  "type": "domain",
+  "riskScore": 84,
+  "verdict": "Malicious",
+  "tags": [
+   "tor-exit",
+   "botnet"
+  ],
+  "country": "Brazil",
+  "reports": 345,
+  "firstSeenMinutesAgo": 110237,
+  "lastSeenMinutesAgo": 768
+ },
+ {
+  "id": "IOC-2007",
+  "value": "8d66976a20750cf72ad055b51bedbfa3bc6dba41f21fa1f4e8dc1c77379ebb41",
+  "type": "hash",
+  "riskScore": 2,
+  "verdict": "Clean",
+  "tags": [
+   "tor-exit",
+   "botnet"
+  ],
+  "country": "China",
+  "reports": 326,
+  "firstSeenMinutesAgo": 125419,
+  "lastSeenMinutesAgo": 76
+ },
+ {
+  "id": "IOC-2008",
+  "value": "http://3e9b18-files.top/01ade/payload.exe",
+  "type": "url",
+  "riskScore": 48,
+  "verdict": "Suspicious",
+  "tags": [
+   "c2-server",
+   "botnet"
+  ],
+  "country": "India",
+  "reports": 288,
+  "firstSeenMinutesAgo": 4388,
+  "lastSeenMinutesAgo": 1314
+ },
+ {
+  "id": "IOC-2009",
+  "value": "203.99.136.245",
+  "type": "ip",
+  "riskScore": 24,
+  "verdict": "Clean",
+  "tags": [
+   "tor-exit",
+   "spam"
+  ],
+  "country": "Russia",
+  "reports": 121,
+  "firstSeenMinutesAgo": 153210,
+  "lastSeenMinutesAgo": 2379
+ },
+ {
+  "id": "IOC-2010",
+  "value": "invoice-docs-portal.org",
+  "type": "domain",
+  "riskScore": 71,
+  "verdict": "Suspicious",
+  "tags": [
+   "spam",
+   "ransomware"
+  ],
+  "country": "Brazil",
+  "reports": 118,
+  "firstSeenMinutesAgo": 23644,
+  "lastSeenMinutesAgo": 3137
+ },
+ {
+  "id": "IOC-2011",
+  "value": "ee974e02704fbf39270d603882af4a2391fb24bac02e5ebc456b66edc4f2023d",
+  "type": "hash",
+  "riskScore": 52,
+  "verdict": "Suspicious",
+  "tags": [
+   "phishing",
+   "scanner"
+  ],
+  "country": "Russia",
+  "reports": 78,
+  "firstSeenMinutesAgo": 107200,
+  "lastSeenMinutesAgo": 2033
+ },
+ {
+  "id": "IOC-2012",
+  "value": "http://bacfcb-files.top/8de79/payload.exe",
+  "type": "url",
+  "riskScore": 20,
+  "verdict": "Clean",
+  "tags": [
+   "scanner",
+   "c2-server"
+  ],
+  "country": "Vietnam",
+  "reports": 320,
+  "firstSeenMinutesAgo": 123463,
+  "lastSeenMinutesAgo": 780
+ },
+ {
+  "id": "IOC-2013",
+  "value": "77.151.102.50",
+  "type": "ip",
+  "riskScore": 68,
+  "verdict": "Suspicious",
+  "tags": [
+   "phishing",
+   "ransomware"
+  ],
+  "country": "China",
+  "reports": 264,
+  "firstSeenMinutesAgo": 17200,
+  "lastSeenMinutesAgo": 4205
+ },
+ {
+  "id": "IOC-2014",
+  "value": "cdn-static-files.xyz",
+  "type": "domain",
+  "riskScore": 96,
+  "verdict": "Malicious",
+  "tags": [
+   "c2-server"
+  ],
+  "country": "Russia",
+  "reports": 246,
+  "firstSeenMinutesAgo": 46756,
+  "lastSeenMinutesAgo": 1319
+ },
+ {
+  "id": "IOC-2015",
+  "value": "72d3646f93cb0dcc03befcaea66ca65a2bc5f6c2794acaf7881284668069f520",
+  "type": "hash",
+  "riskScore": 81,
+  "verdict": "Malicious",
+  "tags": [
+   "scanner",
+   "spam"
+  ],
+  "country": "China",
+  "reports": 338,
+  "firstSeenMinutesAgo": 152788,
+  "lastSeenMinutesAgo": 3065
+ },
+ {
+  "id": "IOC-2016",
+  "value": "http://58867d-files.top/d7761/payload.exe",
+  "type": "url",
+  "riskScore": 96,
+  "verdict": "Malicious",
+  "tags": [
+   "phishing",
+   "botnet"
+  ],
+  "country": "North Korea",
+  "reports": 273,
+  "firstSeenMinutesAgo": 128223,
+  "lastSeenMinutesAgo": 2868
+ },
+ {
+  "id": "IOC-2017",
+  "value": "112.174.164.134",
+  "type": "ip",
+  "riskScore": 48,
+  "verdict": "Suspicious",
+  "tags": [
+   "phishing"
+  ],
+  "country": "China",
+  "reports": 214,
+  "firstSeenMinutesAgo": 47507,
+  "lastSeenMinutesAgo": 3266
+ },
+ {
+  "id": "IOC-2018",
+  "value": "bank-alert-support.info",
+  "type": "domain",
+  "riskScore": 12,
+  "verdict": "Clean",
+  "tags": [
+   "botnet"
+  ],
+  "country": "Brazil",
+  "reports": 243,
+  "firstSeenMinutesAgo": 136837,
+  "lastSeenMinutesAgo": 2407
+ },
+ {
+  "id": "IOC-2019",
+  "value": "b5f0150bbab0012174f162a691412d96670f740e4a0b2aeaff232a1cba776fdf",
+  "type": "hash",
+  "riskScore": 53,
+  "verdict": "Suspicious",
+  "tags": [
+   "c2-server",
+   "tor-exit"
+  ],
+  "country": "Ukraine",
+  "reports": 351,
+  "firstSeenMinutesAgo": 82794,
+  "lastSeenMinutesAgo": 855
+ },
+ {
+  "id": "IOC-2020",
+  "value": "http://64c73d-files.top/dfa95/payload.exe",
+  "type": "url",
+  "riskScore": 83,
+  "verdict": "Malicious",
+  "tags": [
+   "spam",
+   "ransomware"
+  ],
+  "country": "Russia",
+  "reports": 289,
+  "firstSeenMinutesAgo": 155747,
+  "lastSeenMinutesAgo": 2924
+ },
+ {
+  "id": "IOC-2021",
+  "value": "45.182.52.9",
+  "type": "ip",
+  "riskScore": 72,
+  "verdict": "Suspicious",
+  "tags": [
+   "spam",
+   "phishing"
+  ],
+  "country": "China",
+  "reports": 103,
+  "firstSeenMinutesAgo": 54164,
+  "lastSeenMinutesAgo": 3936
+ },
+ {
+  "id": "IOC-2022",
+  "value": "dl-freeware-tools.top",
+  "type": "domain",
+  "riskScore": 10,
+  "verdict": "Clean",
+  "tags": [
+   "c2-server",
+   "ransomware"
+  ],
+  "country": "United States",
+  "reports": 82,
+  "firstSeenMinutesAgo": 126660,
+  "lastSeenMinutesAgo": 1024
+ },
+ {
+  "id": "IOC-2023",
+  "value": "f042c3f81b637e739edb19ba6f83ca957f0dd14bd7ce7942c145fc0309b49edc",
+  "type": "hash",
+  "riskScore": 92,
+  "verdict": "Malicious",
+  "tags": [
+   "botnet",
+   "ransomware"
+  ],
+  "country": "China",
+  "reports": 278,
+  "firstSeenMinutesAgo": 159065,
+  "lastSeenMinutesAgo": 52
+ },
+ {
+  "id": "IOC-2024",
+  "value": "http://21b1d9-files.top/e7f1d/payload.exe",
+  "type": "url",
+  "riskScore": 64,
+  "verdict": "Suspicious",
+  "tags": [
+   "malware-host",
+   "ransomware"
+  ],
+  "country": "Russia",
+  "reports": 32,
+  "firstSeenMinutesAgo": 130653,
+  "lastSeenMinutesAgo": 1870
+ },
+ {
+  "id": "IOC-2025",
+  "value": "45.52.209.190",
+  "type": "ip",
+  "riskScore": 83,
+  "verdict": "Malicious",
+  "tags": [
+   "c2-server",
+   "malware-host"
+  ],
+  "country": "United States",
+  "reports": 241,
+  "firstSeenMinutesAgo": 157675,
+  "lastSeenMinutesAgo": 829
+ },
+ {
+  "id": "IOC-2026",
+  "value": "mail-auth-check.cc",
+  "type": "domain",
+  "riskScore": 62,
+  "verdict": "Suspicious",
+  "tags": [
+   "c2-server",
+   "phishing"
+  ],
+  "country": "Russia",
+  "reports": 358,
+  "firstSeenMinutesAgo": 2425,
+  "lastSeenMinutesAgo": 2859
+ },
+ {
+  "id": "IOC-2027",
+  "value": "8ae4fba6e126d1cca1684350f048683183d6be1bd4259bb2654ed9623a62df0f",
+  "type": "hash",
+  "riskScore": 66,
+  "verdict": "Suspicious",
+  "tags": [
+   "malware-host",
+   "tor-exit"
+  ],
+  "country": "Vietnam",
+  "reports": 344,
+  "firstSeenMinutesAgo": 124978,
+  "lastSeenMinutesAgo": 141
+ },
+ {
+  "id": "IOC-2028",
+  "value": "http://ed1aa3-files.top/e976e/payload.exe",
+  "type": "url",
+  "riskScore": 14,
+  "verdict": "Clean",
+  "tags": [
+   "ransomware",
+   "phishing"
+  ],
+  "country": "Germany",
+  "reports": 90,
+  "firstSeenMinutesAgo": 51298,
+  "lastSeenMinutesAgo": 3388
+ },
+ {
+  "id": "IOC-2029",
+  "value": "185.51.64.204",
+  "type": "ip",
+  "riskScore": 47,
+  "verdict": "Suspicious",
+  "tags": [
+   "malware-host",
+   "c2-server"
+  ],
+  "country": "China",
+  "reports": 388,
+  "firstSeenMinutesAgo": 104691,
+  "lastSeenMinutesAgo": 1959
+ },
+ {
+  "id": "IOC-2030",
+  "value": "a5d7bbc-portal.net",
+  "type": "domain",
+  "riskScore": 17,
+  "verdict": "Clean",
+  "tags": [
+   "spam",
+   "tor-exit"
+  ],
+  "country": "Brazil",
+  "reports": 335,
+  "firstSeenMinutesAgo": 128912,
+  "lastSeenMinutesAgo": 42
+ },
+ {
+  "id": "IOC-2031",
+  "value": "133b6feea8a96976123165a6f3a5a43986f9732b2c2fc436713b643c33bdc605",
+  "type": "hash",
+  "riskScore": 2,
+  "verdict": "Clean",
+  "tags": [
+   "spam",
+   "phishing"
+  ],
+  "country": "Iran",
+  "reports": 186,
+  "firstSeenMinutesAgo": 28836,
+  "lastSeenMinutesAgo": 3888
+ },
+ {
+  "id": "IOC-2032",
+  "value": "http://dd9cdf-files.top/8c089/payload.exe",
+  "type": "url",
+  "riskScore": 10,
+  "verdict": "Clean",
+  "tags": [
+   "malware-host"
+  ],
+  "country": "United States",
+  "reports": 247,
+  "firstSeenMinutesAgo": 44893,
+  "lastSeenMinutesAgo": 3032
+ },
+ {
+  "id": "IOC-2033",
+  "value": "194.254.130.226",
+  "type": "ip",
+  "riskScore": 94,
+  "verdict": "Malicious",
+  "tags": [
+   "botnet",
+   "ransomware"
+  ],
+  "country": "Iran",
+  "reports": 165,
+  "firstSeenMinutesAgo": 9417,
+  "lastSeenMinutesAgo": 3029
+ },
+ {
+  "id": "IOC-2034",
+  "value": "ad09e57-portal.net",
+  "type": "domain",
+  "riskScore": 94,
+  "verdict": "Malicious",
+  "tags": [
+   "c2-server",
+   "scanner"
+  ],
+  "country": "China",
+  "reports": 228,
+  "firstSeenMinutesAgo": 64817,
+  "lastSeenMinutesAgo": 193
+ },
+ {
+  "id": "IOC-2035",
+  "value": "1c74e4fe2520f4020a198648e012c5ca009d9fab3b8e0a2013f480462d6a7977",
+  "type": "hash",
+  "riskScore": 61,
+  "verdict": "Suspicious",
+  "tags": [
+   "scanner",
+   "botnet"
+  ],
+  "country": "Russia",
+  "reports": 236,
+  "firstSeenMinutesAgo": 42666,
+  "lastSeenMinutesAgo": 1686
+ },
+ {
+  "id": "IOC-2036",
+  "value": "http://9ebb8a-files.top/d20d4/payload.exe",
+  "type": "url",
+  "riskScore": 72,
+  "verdict": "Suspicious",
+  "tags": [
+   "tor-exit",
+   "c2-server"
+  ],
+  "country": "Germany",
+  "reports": 259,
+  "firstSeenMinutesAgo": 104731,
+  "lastSeenMinutesAgo": 190
+ },
+ {
+  "id": "IOC-2037",
+  "value": "77.89.6.132",
+  "type": "ip",
+  "riskScore": 95,
+  "verdict": "Malicious",
+  "tags": [
+   "tor-exit",
+   "phishing"
+  ],
+  "country": "United States",
+  "reports": 103,
+  "firstSeenMinutesAgo": 130096,
+  "lastSeenMinutesAgo": 1254
+ },
+ {
+  "id": "IOC-2038",
+  "value": "f77c7a0-portal.net",
+  "type": "domain",
+  "riskScore": 38,
+  "verdict": "Clean",
+  "tags": [
+   "tor-exit",
+   "phishing"
+  ],
+  "country": "Iran",
+  "reports": 183,
+  "firstSeenMinutesAgo": 128077,
+  "lastSeenMinutesAgo": 571
+ },
+ {
+  "id": "IOC-2039",
+  "value": "c73779afe1a649011c4679da82277319a8518e1da06198105de9f162fea56de3",
+  "type": "hash",
+  "riskScore": 48,
+  "verdict": "Suspicious",
+  "tags": [
+   "scanner",
+   "spam"
+  ],
+  "country": "India",
+  "reports": 127,
+  "firstSeenMinutesAgo": 158257,
+  "lastSeenMinutesAgo": 3610
+ },
+ {
+  "id": "IOC-2040",
+  "value": "http://60f254-files.top/4c028/payload.exe",
+  "type": "url",
+  "riskScore": 81,
+  "verdict": "Malicious",
+  "tags": [
+   "ransomware",
+   "malware-host"
+  ],
+  "country": "China",
+  "reports": 148,
+  "firstSeenMinutesAgo": 17837,
+  "lastSeenMinutesAgo": 707
+ },
+ {
+  "id": "IOC-2041",
+  "value": "194.204.208.143",
+  "type": "ip",
+  "riskScore": 90,
+  "verdict": "Malicious",
+  "tags": [
+   "tor-exit",
+   "botnet"
+  ],
+  "country": "Russia",
+  "reports": 172,
+  "firstSeenMinutesAgo": 22588,
+  "lastSeenMinutesAgo": 1839
+ },
+ {
+  "id": "IOC-2042",
+  "value": "22c4132-portal.net",
+  "type": "domain",
+  "riskScore": 30,
+  "verdict": "Clean",
+  "tags": [
+   "ransomware"
+  ],
+  "country": "Brazil",
+  "reports": 234,
+  "firstSeenMinutesAgo": 86206,
+  "lastSeenMinutesAgo": 3688
+ },
+ {
+  "id": "IOC-2043",
+  "value": "4205946de723cf81c646a5a543af2fed2b2b07672b6c89c324b2a51f81291e05",
+  "type": "hash",
+  "riskScore": 15,
+  "verdict": "Clean",
+  "tags": [
+   "botnet",
+   "ransomware"
+  ],
+  "country": "Vietnam",
+  "reports": 137,
+  "firstSeenMinutesAgo": 23501,
+  "lastSeenMinutesAgo": 1819
+ },
+ {
+  "id": "IOC-2044",
+  "value": "http://79a517-files.top/b5a1c/payload.exe",
+  "type": "url",
+  "riskScore": 47,
+  "verdict": "Suspicious",
+  "tags": [
+   "tor-exit",
+   "scanner"
+  ],
+  "country": "Russia",
+  "reports": 85,
+  "firstSeenMinutesAgo": 115314,
+  "lastSeenMinutesAgo": 3624
+ },
+ {
+  "id": "IOC-2045",
+  "value": "45.175.109.41",
+  "type": "ip",
+  "riskScore": 46,
+  "verdict": "Suspicious",
+  "tags": [
+   "c2-server",
+   "botnet"
+  ],
+  "country": "North Korea",
+  "reports": 50,
+  "firstSeenMinutesAgo": 166356,
+  "lastSeenMinutesAgo": 1172
+ },
+ {
+  "id": "IOC-2046",
+  "value": "31ee041-portal.net",
+  "type": "domain",
+  "riskScore": 70,
+  "verdict": "Suspicious",
+  "tags": [
+   "spam",
+   "botnet"
+  ],
+  "country": "United States",
+  "reports": 159,
+  "firstSeenMinutesAgo": 85656,
+  "lastSeenMinutesAgo": 1997
+ },
+ {
+  "id": "IOC-2047",
+  "value": "c6b93daa8d256d6884339f33adc8737aa70a6174e90e18e0d79c518e038e41a3",
+  "type": "hash",
+  "riskScore": 8,
+  "verdict": "Clean",
+  "tags": [
+   "ransomware",
+   "botnet"
+  ],
+  "country": "China",
+  "reports": 354,
+  "firstSeenMinutesAgo": 67500,
+  "lastSeenMinutesAgo": 2911
+ },
+ {
+  "id": "IOC-2048",
+  "value": "http://d1aa2b-files.top/400e8/payload.exe",
+  "type": "url",
+  "riskScore": 2,
+  "verdict": "Clean",
+  "tags": [
+   "malware-host"
+  ],
+  "country": "Russia",
+  "reports": 296,
+  "firstSeenMinutesAgo": 69828,
+  "lastSeenMinutesAgo": 2513
+ },
+ {
+  "id": "IOC-2049",
+  "value": "91.242.227.149",
+  "type": "ip",
+  "riskScore": 14,
+  "verdict": "Clean",
+  "tags": [
+   "ransomware",
+   "tor-exit"
+  ],
+  "country": "Vietnam",
+  "reports": 89,
+  "firstSeenMinutesAgo": 103456,
+  "lastSeenMinutesAgo": 3632
+ },
+ {
+  "id": "IOC-2050",
+  "value": "40553a2-portal.net",
+  "type": "domain",
+  "riskScore": 53,
+  "verdict": "Suspicious",
+  "tags": [
+   "botnet"
+  ],
+  "country": "Brazil",
+  "reports": 234,
+  "firstSeenMinutesAgo": 75671,
+  "lastSeenMinutesAgo": 162
+ },
+ {
+  "id": "IOC-2051",
+  "value": "3719f3d9e68423e813b83456ae17a5dc4506280e557427e5111e41925adaa16e",
+  "type": "hash",
+  "riskScore": 63,
+  "verdict": "Suspicious",
+  "tags": [
+   "malware-host",
+   "tor-exit"
+  ],
+  "country": "Russia",
+  "reports": 76,
+  "firstSeenMinutesAgo": 141238,
+  "lastSeenMinutesAgo": 438
+ },
+ {
+  "id": "IOC-2052",
+  "value": "http://c38caa-files.top/24a9e/payload.exe",
+  "type": "url",
+  "riskScore": 46,
+  "verdict": "Suspicious",
+  "tags": [
+   "ransomware",
+   "botnet"
+  ],
+  "country": "United States",
+  "reports": 365,
+  "firstSeenMinutesAgo": 164703,
+  "lastSeenMinutesAgo": 2735
+ },
+ {
+  "id": "IOC-2053",
+  "value": "185.191.140.88",
+  "type": "ip",
+  "riskScore": 51,
+  "verdict": "Suspicious",
+  "tags": [
+   "phishing",
+   "ransomware"
+  ],
+  "country": "Russia",
+  "reports": 4,
+  "firstSeenMinutesAgo": 36334,
+  "lastSeenMinutesAgo": 1882
+ },
+ {
+  "id": "IOC-2054",
+  "value": "92d59d3-portal.net",
+  "type": "domain",
+  "riskScore": 94,
+  "verdict": "Malicious",
+  "tags": [
+   "ransomware",
+   "c2-server"
+  ],
+  "country": "North Korea",
+  "reports": 239,
+  "firstSeenMinutesAgo": 9566,
+  "lastSeenMinutesAgo": 107
+ },
+ {
+  "id": "IOC-2055",
+  "value": "c2da6d8f49c093e00efaf0a3af30de6770bee3cd3e55bcba26486c982a927833",
+  "type": "hash",
+  "riskScore": 78,
+  "verdict": "Malicious",
+  "tags": [
+   "scanner",
+   "tor-exit"
+  ],
+  "country": "India",
+  "reports": 93,
+  "firstSeenMinutesAgo": 46327,
+  "lastSeenMinutesAgo": 2648
+ },
+ {
+  "id": "IOC-2056",
+  "value": "http://c84daa-files.top/f821f/payload.exe",
+  "type": "url",
+  "riskScore": 83,
+  "verdict": "Malicious",
+  "tags": [
+   "phishing",
+   "ransomware"
+  ],
+  "country": "United States",
+  "reports": 336,
+  "firstSeenMinutesAgo": 128071,
+  "lastSeenMinutesAgo": 3032
+ },
+ {
+  "id": "IOC-2057",
+  "value": "103.7.88.95",
+  "type": "ip",
+  "riskScore": 9,
+  "verdict": "Clean",
+  "tags": [
+   "tor-exit"
+  ],
+  "country": "China",
+  "reports": 174,
+  "firstSeenMinutesAgo": 9668,
+  "lastSeenMinutesAgo": 2598
+ },
+ {
+  "id": "IOC-2058",
+  "value": "5447423-portal.net",
+  "type": "domain",
+  "riskScore": 76,
+  "verdict": "Malicious",
+  "tags": [
+   "tor-exit",
+   "c2-server"
+  ],
+  "country": "Iran",
+  "reports": 383,
+  "firstSeenMinutesAgo": 82562,
+  "lastSeenMinutesAgo": 3724
+ },
+ {
+  "id": "IOC-2059",
+  "value": "c49e7bed1cea8540f7fbc9f8f8d95c30ba70485e8be3fc8f41c11df1c5276d72",
+  "type": "hash",
+  "riskScore": 26,
+  "verdict": "Clean",
+  "tags": [
+   "c2-server",
+   "ransomware"
+  ],
+  "country": "China",
+  "reports": 277,
+  "firstSeenMinutesAgo": 120575,
+  "lastSeenMinutesAgo": 630
+ },
+ {
+  "id": "IOC-2060",
+  "value": "http://d8daaf-files.top/54bd2/payload.exe",
+  "type": "url",
+  "riskScore": 31,
+  "verdict": "Clean",
+  "tags": [
+   "tor-exit",
+   "botnet"
+  ],
+  "country": "United States",
+  "reports": 389,
+  "firstSeenMinutesAgo": 39922,
+  "lastSeenMinutesAgo": 1167
+ }
+]

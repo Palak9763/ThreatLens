@@ -1,0 +1,226 @@
+[
+ {
+  "id": "INC-301",
+  "title": "Ransomware outbreak on finance subnet",
+  "severity": "Critical",
+  "status": "Investigating",
+  "assignee": "Aarav Sharma",
+  "createdMinutesAgo": 8637,
+  "description": "Incident raised after correlated alerts. Initial triage in progress for: ransomware outbreak on finance subnet.",
+  "notes": [
+   {
+    "author": "Aarav Sharma",
+    "text": "Incident created and triage started.",
+    "minutesAgo": 20
+   }
+  ]
+ },
+ {
+  "id": "INC-302",
+  "title": "Suspicious VPN logins from multiple countries",
+  "severity": "High",
+  "status": "Open",
+  "assignee": "Priya Nair",
+  "createdMinutesAgo": 6985,
+  "description": "Incident raised after correlated alerts. Initial triage in progress for: suspicious vpn logins from multiple countries.",
+  "notes": [
+   {
+    "author": "Priya Nair",
+    "text": "Incident created and triage started.",
+    "minutesAgo": 20
+   }
+  ]
+ },
+ {
+  "id": "INC-303",
+  "title": "Phishing campaign targeting HR team",
+  "severity": "High",
+  "status": "Investigating",
+  "assignee": "Rohan Patil",
+  "createdMinutesAgo": 6836,
+  "description": "Incident raised after correlated alerts. Initial triage in progress for: phishing campaign targeting hr team.",
+  "notes": [
+   {
+    "author": "Rohan Patil",
+    "text": "Incident created and triage started.",
+    "minutesAgo": 20
+   }
+  ]
+ },
+ {
+  "id": "INC-304",
+  "title": "DDoS on customer portal",
+  "severity": "High",
+  "status": "Resolved",
+  "assignee": "Sneha Kulkarni",
+  "createdMinutesAgo": 11274,
+  "description": "Incident raised after correlated alerts. Initial triage in progress for: ddos on customer portal.",
+  "notes": [
+   {
+    "author": "Sneha Kulkarni",
+    "text": "Incident created and triage started.",
+    "minutesAgo": 20
+   }
+  ]
+ },
+ {
+  "id": "INC-305",
+  "title": "Unpatched Apache server exposed",
+  "severity": "Medium",
+  "status": "Open",
+  "assignee": "Aarav Sharma",
+  "createdMinutesAgo": 9160,
+  "description": "Incident raised after correlated alerts. Initial triage in progress for: unpatched apache server exposed.",
+  "notes": [
+   {
+    "author": "Aarav Sharma",
+    "text": "Incident created and triage started.",
+    "minutesAgo": 20
+   }
+  ]
+ },
+ {
+  "id": "INC-306",
+  "title": "Brute-force attempts on admin panel",
+  "severity": "Medium",
+  "status": "Investigating",
+  "assignee": "Priya Nair",
+  "createdMinutesAgo": 853,
+  "description": "Incident raised after correlated alerts. Initial triage in progress for: brute-force attempts on admin panel.",
+  "notes": [
+   {
+    "author": "Priya Nair",
+    "text": "Incident created and triage started.",
+    "minutesAgo": 20
+   }
+  ]
+ },
+ {
+  "id": "INC-307",
+  "title": "Malware detected on reception PC",
+  "severity": "Medium",
+  "status": "Resolved",
+  "assignee": "Rohan Patil",
+  "createdMinutesAgo": 11587,
+  "description": "Incident raised after correlated alerts. Initial triage in progress for: malware detected on reception pc.",
+  "notes": [
+   {
+    "author": "Rohan Patil",
+    "text": "Incident created and triage started.",
+    "minutesAgo": 20
+   }
+  ]
+ },
+ {
+  "id": "INC-308",
+  "title": "Data exfiltration alert - cloud bucket",
+  "severity": "Critical",
+  "status": "Open",
+  "assignee": "Sneha Kulkarni",
+  "createdMinutesAgo": 9106,
+  "description": "Incident raised after correlated alerts. Initial triage in progress for: data exfiltration alert - cloud bucket.",
+  "notes": [
+   {
+    "author": "Sneha Kulkarni",
+    "text": "Incident created and triage started.",
+    "minutesAgo": 20
+   }
+  ]
+ },
+ {
+  "id": "INC-309",
+  "title": "Expired SSL certificate on mail gateway",
+  "severity": "Low",
+  "status": "Closed",
+  "assignee": "Aarav Sharma",
+  "createdMinutesAgo": 2672,
+  "description": "Incident raised after correlated alerts. Initial triage in progress for: expired ssl certificate on mail gateway.",
+  "notes": [
+   {
+    "author": "Aarav Sharma",
+    "text": "Incident created and triage started.",
+    "minutesAgo": 20
+   }
+  ]
+ },
+ {
+  "id": "INC-310",
+  "title": "SQL injection probes against login API",
+  "severity": "High",
+  "status": "Resolved",
+  "assignee": "Priya Nair",
+  "createdMinutesAgo": 6954,
+  "description": "Incident raised after correlated alerts. Initial triage in progress for: sql injection probes against login api.",
+  "notes": [
+   {
+    "author": "Priya Nair",
+    "text": "Incident created and triage started.",
+    "minutesAgo": 20
+   }
+  ]
+ },
+ {
+  "id": "INC-311",
+  "title": "Unauthorized USB device in server room",
+  "severity": "Low",
+  "status": "Closed",
+  "assignee": "Rohan Patil",
+  "createdMinutesAgo": 515,
+  "description": "Incident raised after correlated alerts. Initial triage in progress for: unauthorized usb device in server room.",
+  "notes": [
+   {
+    "author": "Rohan Patil",
+    "text": "Incident created and triage started.",
+    "minutesAgo": 20
+   }
+  ]
+ },
+ {
+  "id": "INC-312",
+  "title": "Insider downloading bulk customer records",
+  "severity": "Critical",
+  "status": "Investigating",
+  "assignee": "Sneha Kulkarni",
+  "createdMinutesAgo": 8913,
+  "description": "Incident raised after correlated alerts. Initial triage in progress for: insider downloading bulk customer records.",
+  "notes": [
+   {
+    "author": "Sneha Kulkarni",
+    "text": "Incident created and triage started.",
+    "minutesAgo": 20
+   }
+  ]
+ },
+ {
+  "id": "INC-313",
+  "title": "Weak password policy audit finding",
+  "severity": "Low",
+  "status": "Open",
+  "assignee": "Aarav Sharma",
+  "createdMinutesAgo": 4125,
+  "description": "Incident raised after correlated alerts. Initial triage in progress for: weak password policy audit finding.",
+  "notes": [
+   {
+    "author": "Aarav Sharma",
+    "text": "Incident created and triage started.",
+    "minutesAgo": 20
+   }
+  ]
+ },
+ {
+  "id": "INC-314",
+  "title": "C2 beaconing from marketing laptop",
+  "severity": "High",
+  "status": "Open",
+  "assignee": "Priya Nair",
+  "createdMinutesAgo": 6655,
+  "description": "Incident raised after correlated alerts. Initial triage in progress for: c2 beaconing from marketing laptop.",
+  "notes": [
+   {
+    "author": "Priya Nair",
+    "text": "Incident created and triage started.",
+    "minutesAgo": 20
+   }
+  ]
+ }
+]

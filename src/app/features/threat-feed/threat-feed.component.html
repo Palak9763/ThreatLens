@@ -1,0 +1,70 @@
+<div class="page-head">
+  <div>
+    <h1>Threat Feed</h1>
+    <p>Search, filter and triage detected threats. Click a row for full details.</p>
+  </div>
+  <div class="muted">{{ filtered().length }} of {{ threats().length }} threats</div>
+</div>
+
+<section class="card">
+  <div class="toolbar">
+    <div class="grow"><input type="search" [formControl]="searchCtl" placeholder="Search by name, IP, country, asset or ID…" aria-label="Search threats" /></div>
+    <select [value]="sevFilter()" (change)="sevFilter.set($any($event.target).value)" aria-label="Severity">
+      @for (s of severities; track s) { <option [value]="s">{{ s === 'All' ? 'All severities' : s }}</option> }
+    </select>
+    <select [value]="typeFilter()" (change)="typeFilter.set($any($event.target).value)" aria-label="Type">
+      @for (t of types(); track t) { <option [value]="t">{{ t === 'All' ? 'All types' : t }}</option> }
+    </select>
+    <select [value]="statusFilter()" (change)="statusFilter.set($any($event.target).value)" aria-label="Status">
+      @for (s of statuses; track s) { <option [value]="s">{{ s === 'All' ? 'All statuses' : s }}</option> }
+    </select>
+    @if (hasFilters()) { <button class="btn ghost" (click)="clear()">✕ Clear</button> }
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th class="sortable" (click)="sortBy('name')">Threat {{ arrow('name') }}</th>
+          <th class="sortable" (click)="sortBy('severity')">Severity {{ arrow('severity') }}</th>
+          <th>Status</th>
+          <th>Source IP</th>
+          <th class="sortable" (click)="sortBy('country')">Origin {{ arrow('country') }}</th>
+          <th class="sortable" (click)="sortBy('confidence')">Confidence {{ arrow('confidence') }}</th>
+          <th class="sortable" (click)="sortBy('timestamp')">Detected {{ arrow('timestamp') }}</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (t of rows(); track t.id) {
+          <tr class="clickable" (click)="open(t)" tabindex="0" (keydown.enter)="open(t)">
+            <td class="mono muted">{{ t.id }}</td>
+            <td><strong>{{ t.name }}</strong><div class="muted" style="font-size: 12px">{{ t.type }}</div></td>
+            <td><app-badge [label]="t.severity" /></td>
+            <td><app-badge [label]="t.status" /></td>
+            <td class="mono">{{ t.sourceIp }}</td>
+            <td>{{ t.country }}</td>
+            <td>{{ t.confidence }}%</td>
+            <td class="muted">{{ t.timestamp | timeAgo }}</td>
+            <td>
+              <button class="btn sm danger" [disabled]="t.blocked" (click)="block(t, $event)">{{ t.blocked ? 'Blocked' : 'Block IP' }}</button>
+            </td>
+          </tr>
+        } @empty {
+          <tr><td colspan="9"><div class="empty"><span class="big">🕵️</span>No threats match your filters.<br /><button class="btn sm" style="margin-top: 10px" (click)="clear()">Reset filters</button></div></td></tr>
+        }
+      </tbody>
+    </table>
+  </div>
+
+  <div class="pager">
+    <span>Page {{ page() }} of {{ totalPages() }}</span>
+    <div class="pages">
+      <button class="btn sm" [disabled]="page() === 1" (click)="page.set(1)">«</button>
+      <button class="btn sm" [disabled]="page() === 1" (click)="page.set(page() - 1)">‹ Prev</button>
+      <button class="btn sm" [disabled]="page() === totalPages()" (click)="page.set(page() + 1)">Next ›</button>
+      <button class="btn sm" [disabled]="page() === totalPages()" (click)="page.set(totalPages())">»</button>
+    </div>
+  </div>
+</section>

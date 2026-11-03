@@ -1,0 +1,76 @@
+@if (threat(); as t) {
+  <div class="page-head">
+    <div>
+      <a routerLink="/threats">← Back to Threat Feed</a>
+      <h1 style="margin-top: 8px">{{ t.name }}</h1>
+      <div class="row" style="margin-top: 8px">
+        <span class="mono muted">{{ t.id }}</span><app-badge [label]="t.severity" /><app-badge [label]="t.status" />
+        @if (t.blocked) { <span class="tag">IP blocked</span> }
+      </div>
+    </div>
+    @if (canAct()) {
+      <div class="row">
+        <button class="btn danger" [disabled]="t.blocked" (click)="block()">⛔ {{ t.blocked ? 'IP Blocked' : 'Block Source IP' }}</button>
+        <button class="btn primary" (click)="createIncident()">🚨 Create Incident</button>
+      </div>
+    }
+  </div>
+
+  <div class="grid g-21">
+    <article class="card">
+      <div class="card-head"><h3>Threat Intelligence</h3></div>
+      <p style="margin-top: 0">{{ t.description }}</p>
+      <dl class="kv">
+        <dt>Threat type</dt><dd>{{ t.type }}</dd>
+        <dt>MITRE tactic</dt><dd>{{ t.tactic }}</dd>
+        <dt>Source IP</dt><dd class="mono">{{ t.sourceIp }}</dd>
+        <dt>Origin country</dt><dd>{{ t.country }} ({{ t.countryCode }})</dd>
+        <dt>Target asset</dt><dd>{{ t.targetAsset }}</dd>
+        <dt>Detected</dt><dd>{{ t.timestamp.toLocaleString('en-IN') }} ({{ t.timestamp | timeAgo }})</dd>
+        <dt>Confidence</dt>
+        <dd>
+          <div class="row"><div class="bar-bg" style="max-width: 220px"><div class="bar-fill" [style.width.%]="t.confidence"></div></div><strong>{{ t.confidence }}%</strong></div>
+        </dd>
+      </dl>
+    </article>
+
+    <article class="card">
+      <div class="card-head"><h3>Update Status</h3></div>
+      @if (canAct()) {
+        <div class="chips">
+          @for (s of statuses; track s) {
+            <button class="chip" [class.on]="t.status === s" (click)="setStatus(s)">{{ s }}</button>
+          }
+        </div>
+      } @else {
+        <p class="muted" style="margin: 0">Viewers have read-only access. Ask an analyst to change the status.</p>
+      }
+
+      <div class="card-head" style="margin-top: 22px"><h3>Recommended Actions</h3></div>
+      <ul class="muted" style="padding-left: 18px; margin: 0; display: grid; gap: 6px">
+        <li>Block the source IP at the perimeter firewall.</li>
+        <li>Review logs for {{ t.targetAsset }} for the last 24 hours.</li>
+        <li>Check the IP in <a routerLink="/ioc">IOC Lookup</a>.</li>
+        <li>Open an incident if the activity is confirmed.</li>
+      </ul>
+    </article>
+  </div>
+
+  <article class="card mt">
+    <div class="card-head"><h3>Related Threats</h3><span class="sub">Same source IP or attack type</span></div>
+    @for (r of related(); track r.id) {
+      <div class="feed-item" style="cursor: pointer" [routerLink]="['/threats', r.id]">
+        <span class="sev-bar" [class]="'sev-bar sev-' + r.severity.toLowerCase()"></span>
+        <div style="flex: 1"><strong>{{ r.name }}</strong><div class="muted mono" style="font-size: 12px">{{ r.id }} · {{ r.sourceIp }} · {{ r.country }}</div></div>
+        <app-badge [label]="r.severity" />
+      </div>
+    } @empty {
+      <div class="empty">No related threats found.</div>
+    }
+  </article>
+} @else {
+  <div class="card empty">
+    <span class="big">🔍</span>Threat not found.<br /><br />
+    <a class="btn" routerLink="/threats">Back to Threat Feed</a>
+  </div>
+}

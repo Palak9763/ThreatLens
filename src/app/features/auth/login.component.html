@@ -1,0 +1,67 @@
+<div class="login-page">
+  <section class="login-hero">
+    <div class="brand" style="padding: 0">
+      <div class="logo">🛡</div>
+      <div>ThreatLens<small>Threat Intelligence</small></div>
+    </div>
+    <h1>See threats <span>before</span> they become incidents.</h1>
+    <ul>
+      <li>Real-time threat feed with severity scoring</li>
+      <li>IOC lookup for IPs, domains, URLs and file hashes</li>
+      <li>Kanban incident response workflow</li>
+      <li>Role-based access and exportable reports</li>
+    </ul>
+  </section>
+
+  <section class="login-box">
+    <form class="login-card" [formGroup]="form" (ngSubmit)="submit()" novalidate>
+      <div class="row" style="margin-bottom: 4px">
+        <h2 style="font-size: 22px">Sign in</h2>
+        <span class="spacer"></span>
+        <button type="button" class="btn icon sm" (click)="theme.toggle()" aria-label="Toggle theme">{{ theme.theme() === 'dark' ? '☀️' : '🌙' }}</button>
+      </div>
+      <p class="muted" style="margin: 0 0 20px">Access the Security Operations Center</p>
+
+      <label class="field">Username
+        <input type="text" formControlName="username" autocomplete="username" placeholder="e.g. admin" />
+        @if (form.controls.username.touched && form.controls.username.errors) {
+          <span class="err">
+            @if (form.controls.username.errors['required']) { Username is required. }
+            @else { Minimum 3 characters. }
+          </span>
+        }
+      </label>
+
+      <label class="field">Password
+        <div style="position: relative">
+          <input [type]="showPassword() ? 'text' : 'password'" formControlName="password" autocomplete="current-password" placeholder="••••••••" />
+          <button type="button" class="btn sm ghost" style="position: absolute; right: 6px; top: 12px; border: none" (click)="showPassword.set(!showPassword())">
+            {{ showPassword() ? 'Hide' : 'Show' }}
+          </button>
+        </div>
+        @if (form.controls.password.touched && form.controls.password.errors) {
+          <span class="err">
+            @if (form.controls.password.errors['required']) { Password is required. }
+            @else { Minimum 6 characters. }
+          </span>
+        }
+      </label>
+
+      @if (error()) { <div class="err" style="margin-bottom: 12px; font-size: 13px">⚠ {{ error() }}</div> }
+
+      <button class="btn primary" style="width: 100%" type="submit" [disabled]="loading()">
+        {{ loading() ? 'Signing in…' : 'Sign in' }}
+      </button>
+
+      <div class="demo-users">
+        <div class="muted" style="font-size: 12px">Demo accounts (click to fill):</div>
+        @for (u of demoUsers; track u.username) {
+          <button type="button" class="demo-user" (click)="fill(u)">
+            <span><strong>{{ u.role }}</strong> <span class="muted mono">{{ u.username }} / {{ u.password }}</span></span>
+            <span class="muted" style="font-size: 11px">{{ u.note }}</span>
+          </button>
+        }
+      </div>
+    </form>
+  </section>
+</div>
