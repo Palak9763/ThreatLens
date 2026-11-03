@@ -1,6 +1,8 @@
 # ThreatLens – Cybersecurity & Threat Intelligence Dashboard
 
-A front-end only Angular application for monitoring threats, looking up Indicators of Compromise (IOCs) and managing security incidents. There is **no backend or database server**: the data lives in JSON files (`public/data/*.json`) and user changes are kept in the browser (`localStorage`).
+ThreatLens is an Angular-based cybersecurity incident and threat intelligence dashboard for monitoring threats, analyzing incidents, detecting suspicious activity, and supporting investigations with security alerts and interactive analytics.
+
+It is a front-end-only Angular application with no backend or database server: data lives in JSON files (`public/data/*.json`), and user changes are kept in the browser (`localStorage`).
 
 ## Features
 - **Login & roles** – admin / analyst / viewer with route guards and role-based UI
