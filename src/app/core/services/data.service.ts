@@ -98,7 +98,9 @@ export class DataService {
       sourceIp: `${45 + Math.floor(Math.random() * 150)}.${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 254) + 1}`
     };
     this.threats$.next([fresh, ...this.threats$.value]);
-    this.toast.show(`${severity} – ${fresh.name} from ${fresh.country}`, severity === 'Critical' ? 'danger' : 'info', 4000);
+    if (severity === 'Critical') {
+      this.toast.show(`Critical – ${fresh.name} from ${fresh.country}`, 'danger', 3000);
+    }
   }
 
   // ---------- IOCs ----------

@@ -1,26 +1,20 @@
 import { Injectable, signal } from '@angular/core';
 
-/** Dark / light theme switcher, remembered in localStorage. */
+/** Fixed light (white) theme service. */
 @Injectable({ providedIn: 'root' })
 export class ThemeService {
-  readonly theme = signal<'dark' | 'light'>(this.load());
+  readonly theme = signal<'light'>('light');
 
   constructor() {
-    this.apply(this.theme());
+    this.apply();
   }
 
   toggle(): void {
-    const next = this.theme() === 'dark' ? 'light' : 'dark';
-    this.theme.set(next);
-    this.apply(next);
-    try { localStorage.setItem('tid-theme', next); } catch { /* ignore */ }
+    // Locked to light / white theme
   }
 
-  private load(): 'dark' | 'light' {
-    try { return localStorage.getItem('tid-theme') === 'light' ? 'light' : 'dark'; } catch { return 'dark'; }
-  }
-
-  private apply(t: string): void {
-    document.documentElement.setAttribute('data-theme', t);
+  private apply(): void {
+    document.documentElement.setAttribute('data-theme', 'light');
+    try { localStorage.setItem('tid-theme', 'light'); } catch { /* ignore */ }
   }
 }

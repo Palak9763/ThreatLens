@@ -17,8 +17,6 @@
     <form class="login-card" [formGroup]="form" (ngSubmit)="submit()" novalidate>
       <div class="row" style="margin-bottom: 4px">
         <h2 style="font-size: 22px">Sign in</h2>
-        <span class="spacer"></span>
-        <button type="button" class="btn icon sm" (click)="theme.toggle()" aria-label="Toggle theme">{{ theme.theme() === 'dark' ? '☀️' : '🌙' }}</button>
       </div>
       <p class="muted" style="margin: 0 0 20px">Access the Security Operations Center</p>
 

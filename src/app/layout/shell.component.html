@@ -38,9 +38,6 @@
         <input #q type="search" placeholder="Search threats, IPs, countries…  (press Enter)" (keydown.enter)="search(q.value); q.value = ''" aria-label="Global search" />
       </div>
       <div class="top-actions">
-        <button class="btn icon" (click)="theme.toggle()" [title]="'Switch to ' + (theme.theme() === 'dark' ? 'light' : 'dark') + ' theme'">
-          {{ theme.theme() === 'dark' ? '☀️' : '🌙' }}
-        </button>
         <div class="user-chip">
           <div class="avatar">{{ initials() }}</div>
           <div><strong>{{ auth.currentUser()?.name }}</strong><small>{{ auth.currentUser()?.role }}</small></div>

@@ -1,4 +1,4 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, OnDestroy, computed, inject, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { Router, RouterLink } from '@angular/router';
 import { ChartConfiguration } from 'chart.js';
@@ -22,9 +22,13 @@ const PALETTE = ['#22d3ee', '#6366f1', '#ff4d6d', '#ff9f43', '#34d399', '#a78bfa
   imports: [ChartComponent, BadgeComponent, TimeAgoPipe, RouterLink],
   templateUrl: './dashboard.component.html'
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnDestroy {
   private data = inject(DataService);
   private router = inject(Router);
+
+  ngOnDestroy(): void {
+    this.data.setLive(false);
+  }
 
   threats = toSignal(this.data.threats, { initialValue: [] });
   incidents = toSignal(this.data.incidents, { initialValue: [] });

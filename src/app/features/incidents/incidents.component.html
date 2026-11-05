@@ -5,10 +5,10 @@
   </div>
   <div class="row">
     <div class="chips">
-      <button class="chip" [class.on]="view() === 'board'" (click)="view.set('board')">▦ Board</button>
-      <button class="chip" [class.on]="view() === 'list'" (click)="view.set('list')">☰ List</button>
+      <button class="chip" [class.on]="view() === 'board'" (click)="view.set('board')">Board</button>
+      <button class="chip" [class.on]="view() === 'list'" (click)="view.set('list')">List</button>
     </div>
-    @if (canEdit()) { <button class="btn primary" (click)="openCreate()">＋ New Incident</button> }
+    @if (canEdit()) { <button class="btn primary" (click)="openCreate()">+ New Incident</button> }
   </div>
 </div>
 
@@ -18,11 +18,16 @@
     <option value="All">All severities</option>
     @for (s of severities; track s) { <option [value]="s">{{ s }}</option> }
   </select>
-  <button class="chip" [class.on]="mineOnly()" (click)="mineOnly.set(!mineOnly())">👤 Assigned to me</button>
-  @if (canEdit()) { <button class="btn sm ghost" (click)="resetDemo()" title="Restore the original demo incidents">↺ Reset demo data</button> }
+  <button class="chip" [class.on]="mineOnly()" (click)="mineOnly.set(!mineOnly())">Assigned to me</button>
+  @if (canEdit()) { <button class="btn sm ghost" (click)="resetDemo()" title="Restore the original demo incidents">Reset demo</button> }
 </div>
 
-@if (!canEdit()) { <div class="card" style="margin-bottom: 14px; padding: 12px 16px">👁 You have <b>viewer</b> access – incidents are read-only.</div> }
+@if (!canEdit()) {
+  <div class="info-banner">
+    <span class="info-tag">Viewer Mode</span>
+    <span>Incidents are currently read-only for your account.</span>
+  </div>
+}
 
 @if (view() === 'board') {
   <div class="board">
@@ -35,7 +40,7 @@
             (dragstart)="onDragStart($event, i)" (dragend)="onDragEnd()" (click)="open(i)" tabindex="0" (keydown.enter)="open(i)">
             <div class="t-id"><span class="mono">{{ i.id }}</span><app-badge [label]="i.severity" /></div>
             <div class="t-title">{{ i.title }}</div>
-            <div class="t-foot"><span>👤 {{ i.assignee }}</span><span>{{ i.createdAt | timeAgo }}</span></div>
+            <div class="t-foot"><span>{{ i.assignee }}</span><span>{{ i.createdAt | timeAgo }}</span></div>
           </article>
         } @empty {
           <div class="empty" style="padding: 24px 6px; font-size: 12.5px">Nothing here</div>
